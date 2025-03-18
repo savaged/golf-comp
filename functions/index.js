@@ -46,11 +46,16 @@ exports.scoreUpdate = onRequest(async (req, res) => {
 
 exports.addPlayer = onRequest(async (req, res) => {
     const playerName = req.body.playerName;
-    const playerCourseHandicap = req.body.playerCourseHandicap;
     const phoneNumber = req.body.phoneNumber;
+    const playerCourseHandicapStr = req.body.playerCourseHandicap;
 
-    if (!playerName || !phoneNumber || !playerCourseHandicap) {
+    if (!playerName || !phoneNumber || !playerCourseHandicapStr) {
         return res.status(400).send("Player name, course handicap and phone number are required.");
+    }
+    const playerCourseHandicap = parseInt(playerCourseHandicapStr);
+    logger.debug("Try validation", {structuredData: true});
+    if (isNaN(playerCourseHandicap) || playerCourseHandicap < 1 || playerCourseHandicap > 54) {
+        return res.status(400).send("The course handicap is outside expected bounds.");
     }
     const gameId = generateGameId();
     const playerRef = admin.firestore().collection('games').doc(gameId).collection('players').doc(phoneNumber);

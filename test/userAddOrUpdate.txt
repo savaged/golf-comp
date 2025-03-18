@@ -1,0 +1,7 @@
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+        "playerName": "David Savage",
+        "phoneNumber": "+447901234567"
+    }' \
+    "https://us-central1-golf-comp.cloudfunctions.net/addPlayer"

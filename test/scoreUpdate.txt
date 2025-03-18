@@ -1,7 +1,7 @@
 curl -X POST \
     -H "Content-Type: application/json" \
     -d '{
-        "Body": "3 7",
+        "Body": "2 5",
         "From": "+447900034567"
     }' \
     "https://us-central1-golf-comp.cloudfunctions.net/scoreUpdate"

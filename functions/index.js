@@ -43,3 +43,38 @@ exports.scoreUpdate = onRequest(async (req, res) => {
         return res.status(500).send('Error saving gross. Please try again later.');
     }
 });
+
+exports.addPlayer = onRequest(async (req, res) => {
+    const playerName = req.body.playerName;
+    const phoneNumber = req.body.phoneNumber;
+
+    if (!playerName || !phoneNumber) {
+        return res.status(400).send("Player name and phone number are required.");
+    }
+    const gameId = generateGameId();
+    const playerRef = admin.firestore().collection('games').doc(gameId).collection('players').doc(phoneNumber);
+
+    try {
+        const docSnap = await playerRef.get();
+        if (!docSnap.exists) {
+            // Player doesn't exist, add them
+            await playerRef.set({
+                name: playerName,
+                scores: {}
+            });
+            logger.log("Player added");
+        } else {
+            // Player exists, update their name (you might want to add more update logic here)
+            await playerRef.update({
+                name: playerName //only updating the name here.  Add other fields as needed.
+            });
+            logger.log("Player updated");
+
+        }
+        return res.status(200).send('Player data processed successfully!');
+    } catch (error) {
+        logger.error('Error processing player data:', error);
+        return res.status(500).send('Error processing player data. Please try again later.');
+    }
+});
+

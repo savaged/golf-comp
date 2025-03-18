@@ -1,2 +1,2 @@
 # golf-comp
-simple golf competition scoring system
+A simple golf competition scoring system using SMS with Google Firestore

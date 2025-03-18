@@ -46,10 +46,11 @@ exports.scoreUpdate = onRequest(async (req, res) => {
 
 exports.addPlayer = onRequest(async (req, res) => {
     const playerName = req.body.playerName;
+    const playerCourseHandicap = req.body.playerCourseHandicap;
     const phoneNumber = req.body.phoneNumber;
 
-    if (!playerName || !phoneNumber) {
-        return res.status(400).send("Player name and phone number are required.");
+    if (!playerName || !phoneNumber || !playerCourseHandicap) {
+        return res.status(400).send("Player name, course handicap and phone number are required.");
     }
     const gameId = generateGameId();
     const playerRef = admin.firestore().collection('games').doc(gameId).collection('players').doc(phoneNumber);
@@ -60,13 +61,15 @@ exports.addPlayer = onRequest(async (req, res) => {
             // Player doesn't exist, add them
             await playerRef.set({
                 name: playerName,
+                courseHandicap: playerCourseHandicap,
                 scores: {}
             });
             logger.log("Player added");
         } else {
-            // Player exists, update their name (you might want to add more update logic here)
+            // Player exists
             await playerRef.update({
-                name: playerName //only updating the name here.  Add other fields as needed.
+                name: playerName,
+                courseHandicap: playerCourseHandicap
             });
             logger.log("Player updated");
 

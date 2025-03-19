@@ -1,1 +1,0 @@
-curl "https://us-central1-golf-comp.cloudfunctions.net/getWinningPlayer"

@@ -6,3 +6,13 @@ curl -X POST \
         "playerCourseHandicap": 11
     }' \
     "https://us-central1-golf-comp.cloudfunctions.net/addPlayer"
+
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+        "phoneNumber": "+447901234567",
+        "playerName": "David Savage",
+        "playerCourseHandicap": 18
+    }' \
+    "https://us-central1-golf-comp.cloudfunctions.net/addPlayer"
+

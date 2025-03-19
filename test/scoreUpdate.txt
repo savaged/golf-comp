@@ -1,7 +1,23 @@
 curl -X POST \
     -H "Content-Type: application/json" \
     -d '{
-        "Body": "4 4",
+        "Body": "1 6 0",
+        "From": "+447901234567"
+    }' \
+    "https://us-central1-golf-comp.cloudfunctions.net/scoreUpdate"
+
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+        "Body": "2 5 2",
+        "From": "+447901234567"
+    }' \
+    "https://us-central1-golf-comp.cloudfunctions.net/scoreUpdate"
+
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+        "Body": "1 7 0",
         "From": "+447900034567"
     }' \
     "https://us-central1-golf-comp.cloudfunctions.net/scoreUpdate"
@@ -9,7 +25,7 @@ curl -X POST \
 curl -X POST \
     -H "Content-Type: application/json" \
     -d '{
-        "Body": "5 4 2",
+        "Body": "2 6 1",
         "From": "+447900034567"
     }' \
     "https://us-central1-golf-comp.cloudfunctions.net/scoreUpdate"

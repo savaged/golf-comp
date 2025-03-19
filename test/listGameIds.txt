@@ -1,0 +1,5 @@
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{}' \
+  "https://us-central1-golf-comp.cloudfunctions.net/listGameIds"
+

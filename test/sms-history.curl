@@ -1,5 +1,0 @@
-DATA=$(curl -s \
-    --header "Authorization: Basic ${CREDS}" \
-    'https://rest.clicksend.com/v3/sms/history?date_from=&date_to=')
-echo $DATA
-

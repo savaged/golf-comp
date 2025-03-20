@@ -1,4 +1,0 @@
-csvsql --query \
-    "SELECT date_added AS received, CAST(\`from\` AS INTEGER) AS player, SUBSTR(body, 1, INSTR(body, ' ') - 1) AS hole, SUBSTR(body, INSTR(body, ' ') + 1, INSTR(SUBSTR(body, INSTR(body, ' ') + 1), ' ') - 1) AS gross, SUBSTR(body, INSTR(body, ' ', INSTR(body, ' ') + 1) + 1) AS points FROM smshistory WHERE direction = 'in' AND body REGEXP '^[1-9]+ [1-9]+ [1-9]+$'" \
-    smshistory.csv
-

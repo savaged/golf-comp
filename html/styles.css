@@ -1,0 +1,40 @@
+/* Dark Theme Styles */
+
+body {
+  background-color: #121212; /* Very dark gray background */
+  color: #f0f0f0; /* Light gray text */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #212121; /* Slightly lighter dark gray for table background */
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #424242; /* Darker gray for borders */
+  text-align: left;
+}
+
+th {
+  background-color: #303030; /* Even lighter dark gray for header background */
+  color: #fff; /* White text for header */
+}
+
+/* Media query for smaller screens (e.g., mobile) */
+@media (max-width: 600px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+}

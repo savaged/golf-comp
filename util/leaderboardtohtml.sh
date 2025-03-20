@@ -2,7 +2,18 @@
 
 output_file="html/index.html"
 
-echo "<html><body><table>" > "$output_file"
+cat <<EOF > "$output_file"
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<table>
+EOF
 
 # Read the header row
 header=$(head -n 1 leaderboard.csv)

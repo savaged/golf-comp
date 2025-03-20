@@ -2,6 +2,14 @@
 
 A rudimentary golf competition scoring system using SMS with ClickSend
 
+## Prerequisites
+
+* A Unix like command line.
+* Internet access and a browser.
+* Willingness to run shell scripts whilst others are enjoying competition.
+* Resilience if things go wrong.
+
+
 ## Before a competition
 
 ### Days prior
@@ -18,6 +26,7 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 
 ### Just prior
 
+* Instruct players to use scorecards and return them at the end of their round as the primary and official way of inclusion in the competition.
 * Instruct players to send an SMS to the ClickSend number with the following content for each hole played: hole gross-score stableford-points (e.g. 1 4 2).
 * Instruct players to visit your Netlify site to see the leaderboard; refreshing their browser to see updates.
 

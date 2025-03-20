@@ -1,6 +1,7 @@
 SELECT
-    CAST(player AS INTEGER) AS player,
-    SUM(CAST(points AS INTEGER)) AS total
-FROM filtered
-GROUP BY player
+    p.name AS player,
+    SUM(CAST(f.points AS INTEGER)) AS total
+FROM filtered f
+LEFT JOIN players p ON CAST(f.player AS INTEGER) = p.mobile
+GROUP BY f.player
 ORDER BY total;

@@ -1,0 +1,9 @@
+At our forthcoming golf competition we aim to benefit from on-course access to a leaderboard with regular updates.
+Players will still need to use scorecards and return them at the end of their round as the primary and official way of inclusion in the competition.
+However, we will also use SMS to provide the score. At the end of each hole one will send an SMS to the number this message has originated from.
+
+The SMS should have the following content for each hole played: hole gross-score stableford-points (e.g. 1 4 2). There should be no other content sent to this number.
+
+At regular intervals a leaderboard will be updated at the following website: https://golf-comp.netlify.app
+Refresh your browser to see updates.
+

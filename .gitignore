@@ -78,4 +78,5 @@ scratchpad.*
 .creds
 output.txt
 *.csv
+html/
 

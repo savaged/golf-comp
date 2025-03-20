@@ -1,0 +1,6 @@
+Golf day update...
+While scorecards remain the official record, we'll also be updating a live leaderboard at https://golf-comp.netlify.app throughout the day via SMS.
+To contribute your score at the end of each hole, text the following to the number that you will soon receive instructions from:
+  hole gross-score stableford-points (e.g., 1 4 2)
+Remember to refresh your browser to see the latest leaderboard updates.
+Enjoy the competition!

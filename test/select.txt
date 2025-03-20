@@ -1,2 +1,4 @@
-csvsql --query "select format(date_added, 'yyyy-MM-dd HH:mm') as received, cast(\`from\` as int) as player, body from smshistory where direction = 'in'" smshistory.csv
+csvsql --query \
+    "SELECT FORMAT(date_added, 'yyyy-MM-dd HH:mm') AS received, CAST(\`from\` AS INT) AS player, body FROM smshistory WHERE direction = 'in' AND body REGEXP '^[1-9]+ [1-9]+ [1-9]*$'" \
+    smshistory.csv
 

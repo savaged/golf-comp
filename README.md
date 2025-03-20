@@ -19,10 +19,11 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 * Gather the player data into a file named `players.csv` in the `data` folder (see the README in that folder).
 * Generate the ClickSend credentials with the shell script within the `src` folder.
 
-### One day prior
+### A few days prior
 
 * Test by requesting a few highly cooperative players to send an SMS to the ClickSend number with three whole numbers separated by a single space, a few times with differing numbers.
 * Run the 'Deployment Steps' below.
+* Send SMS via a ClickSend campaign with content based on the file `instructions-sms.txt`.
 
 ### Just prior
 

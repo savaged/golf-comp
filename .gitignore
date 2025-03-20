@@ -71,6 +71,9 @@ node_modules/
 # vim
 *.swp
 
+# scratchpads
+scratchpad.*
+
 # runtime data
 .creds
 output.txt

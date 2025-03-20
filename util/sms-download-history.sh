@@ -1,31 +1,38 @@
 #!/bin/sh
 
-# Check if the CREDS environment variable is set
+CREDS=$(cat .creds)
 if [ -z "$CREDS" ]; then
-  echo "Error: CREDS environment variable must be set." >&2
-  echo "Please set the CREDS environment variable with your base64 encoded credentials." >&2
+  echo "Error: CREDS file not found or empty." >&2
+  echo "Please set the CREDS file with your base64 encoded credentials by running the script generate-credentials-file.sh." >&2
   exit 1
 fi
 
-EXPORT_FILE="export.csv" # The filename given in the export URL
-DOWNLOAD_FILE="sms-history-download.csv" # The filename to save
+EXPORT_FILE="export.csv"
+DOWNLOAD_FILE="sms-history-download.csv"
+TEMP_JSON_FILE="output.txt"
 
-# curl command to get json
-CURL_COMMAND="curl -s --header \"Authorization: Basic ${CREDS}\" https://rest.clicksend.com/v3/sms/history/export?filename=${EXPORT_FILE}"
+curl -s --header "Authorization: Basic ${CREDS}" "https://rest.clicksend.com/v3/sms/history/export?filename=${EXPORT_FILE}" > "$TEMP_JSON_FILE"
 
-# Set the json from the following curl script above
-echo "Executing curl command: $CURL_COMMAND"
-JSON_STRING=$($CURL_COMMAND)
-echo "JSON_STRING:"
-echo $JSON_STRING
+if [ $? -ne 0 ]; then
+  echo "Error: curl command failed. Check the output or the server." >&2
+  rm -f "$TEMP_JSON_FILE"
+  exit 1
+fi
+
+JSON_STRING=$(cat "$TEMP_JSON_FILE")
+
+rm -f "$TEMP_JSON_FILE"
+
+if [ -z "$JSON_STRING" ]; then
+    echo "Error: Unable to set JSON_STRING (file was empty)." >&2
+    exit 1
+fi
 
 if command -v jq >/dev/null 2>&1; then
   URL=$(echo "$JSON_STRING" | jq -r '.data.url')
-  echo "URL (using jq): $URL"
 else
   #If jq is not installed then fall back to sed, which is less reliable.
   URL=$(echo "$JSON_STRING" | sed -n 's/.*"url":"\([^"]*\)".*/\1/p')
-  echo "URL (using sed): $URL"
 fi
 
 if [ -z "$URL" ]; then
@@ -33,10 +40,8 @@ if [ -z "$URL" ]; then
     exit 1
 fi
 
-# Download the file using curl
-echo "Downloading file to: $DOWNLOAD_FILE"
 if curl -s -o "$DOWNLOAD_FILE" "$URL"; then
-  echo "File downloaded successfully."
+  echo "File downloaded to $DOWNLOAD_FILE."
 else
   echo "Error: Failed to download file." >&2
   exit 1

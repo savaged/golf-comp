@@ -70,3 +70,9 @@ node_modules/
 
 # vim
 *.swp
+
+# runtime data
+.creds
+output.txt
+*.csv
+

@@ -13,7 +13,6 @@ EXPORT_FILE="export.csv"
 FILTER_HISTORY_SQL="src/filterhistory.sql"
 LEADERBOARD_SQL="src/leaderboard.sql"
 HTML_OUTPUT_FILE="html/index.html"
-STYLES_CSS="html/styles.css"
 
 # Step 1: Verify CREDS and Download Export URL
 echo "Step 1: Verifying credentials and retrieving export URL..."
@@ -80,7 +79,7 @@ cat <<EOF > "$HTML_OUTPUT_FILE"
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaderboard</title>
-  <link rel="stylesheet" href="$STYLES_CSS">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <table>

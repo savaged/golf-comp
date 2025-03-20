@@ -1,1 +1,2 @@
-csvsql --query "select date_added as received, \`from\` as player, body from smshistory where direction = 'in'" smshistory.csv
+csvsql --query "select format(date_added, 'yyyy-MM-dd HH:mm') as received, cast(\`from\` as int) as player, body from smshistory where direction = 'in'" smshistory.csv
+

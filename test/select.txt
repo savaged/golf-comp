@@ -1,0 +1,1 @@
+csvsql --query "select date_added as received, \`from\` as player, body from smshistory where direction = 'in'" smshistory.csv

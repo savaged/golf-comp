@@ -8,7 +8,7 @@ if [ -z "$CREDS" ]; then
 fi
 
 EXPORT_FILE="export.csv"
-DOWNLOAD_FILE="sms-history-download.csv"
+DOWNLOAD_FILE="smshistory.csv"
 TEMP_JSON_FILE="output.txt"
 
 curl -s --header "Authorization: Basic ${CREDS}" "https://rest.clicksend.com/v3/sms/history/export?filename=${EXPORT_FILE}" > "$TEMP_JSON_FILE"

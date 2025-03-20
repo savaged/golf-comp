@@ -1,4 +1,4 @@
-Live leaderboard at https://golf-comp.netlify.app
+Live leaderboard website golf-comp.netlify.app
 SMS the hole, gross-score & points (eg. 1 4 2) at each hole
 Refresh browser for updates.
 Enjoy!

@@ -36,16 +36,12 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 
 * At regular intervals run the 'Deployment Steps' below.
 
-## Deployment Steps
+## Deployment
 
 * Run the shell script `generate-leaderboard.sh` that is within the `src` folder. (i.e. `$ src\generate-leaderboard.sh`).
-* Deploy the result by copying the folder named `html` to your Netlify site. This can be done manually in a browser or with the [netlify-cli](https://docs.netlify.com/cli/get-started/)...
-    * `ntl login` (one time)
-    * From within the local git repository `cd hmtl`
-    * `ntl deploy --prod -d .` (first time might be interactive)
+
 
 ## Roadmap
 
-* Partially automate using cron and the netlify-cli.
 * Find a way to fully automate for realtime updates, initiated each time a player sends their SMS score.
 

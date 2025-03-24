@@ -97,8 +97,8 @@ header=$(echo "$header" | sed 's/,/<\/th><th>/g')
 echo "<tr><th>$header</th></tr>" >> "$HTML_OUTPUT_FILE"
 
 # Process the data rows
-tail -n +2 "$LEADERBOARD_FILE" | while IFS=, read -r player total; do
-echo "<tr><td>$player</td><td>$total</td></tr>" >> "$HTML_OUTPUT_FILE"
+tail -n +2 "$LEADERBOARD_FILE" | while IFS=, read -r player total thru; do
+echo "<tr><td>$player</td><td>$total</td><td>$thru</td></tr>" >> "$HTML_OUTPUT_FILE"
 done
 
 echo "</table></body></html>" >> "$HTML_OUTPUT_FILE"

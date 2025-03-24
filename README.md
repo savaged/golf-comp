@@ -43,6 +43,6 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 
 ## Roadmap
 
+* Partially automate using cron and the netlify-cli.
 * Find a way to fully automate for realtime updates, initiated each time a player sends their SMS score.
-
 

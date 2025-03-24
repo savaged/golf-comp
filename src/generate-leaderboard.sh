@@ -12,7 +12,7 @@ LEADERBOARD_FILE="data/leaderboard.csv"
 EXPORT_FILE="export.csv"
 FILTER_HISTORY_SQL="src/filterhistory.sql"
 LEADERBOARD_SQL="src/leaderboard.sql"
-HTML_OUTPUT_FILE="html/index.html"
+HTML_OUTPUT_FILE="_site/index.html"
 
 # Step 1: Verify CREDS and Download Export URL
 echo "Step 1: Verifying credentials and retrieving export URL..."

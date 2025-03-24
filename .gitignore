@@ -78,8 +78,9 @@ scratchpad.*
 .creds
 output.txt
 *.csv
-html/index.html
+_site/index.html
 
 
 # Local Netlify folder
 .netlify
+

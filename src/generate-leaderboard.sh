@@ -106,9 +106,9 @@ echo "</table></body></html>" >> "$HTML_OUTPUT_FILE"
 echo "HTML file generated."
 
 echo "Step 6: Deploy site"
-pushd _site
+cd _site
 ntl deploy --prod -d .
-popd
+cd ..
 
 echo "All steps completed!"
 

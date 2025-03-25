@@ -5,7 +5,6 @@ set -e # Exit immediately if a command exits with a non-zero status
 # Define variables
 SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)" # Where the script *is*
 BASE_DIR="$(dirname "$SCRIPT_DIR")"  # The parent directory where the script should be run from
-
 CREDS_FILE="$BASE_DIR/.creds"
 PLAYERS_CSV="$BASE_DIR/data/players.csv"
 DOWNLOAD_FILE="$BASE_DIR/data/smshistory.csv"
@@ -15,9 +14,9 @@ LEADERBOARD_FILE="$BASE_DIR/data/leaderboard.csv"
 EXPORT_FILE="export.csv"
 FILTER_HISTORY_SQL="$BASE_DIR/src/filterhistory.sql"
 LEADERBOARD_SQL="$BASE_DIR/src/leaderboard.sql"
-HTML_OUTPUT_FILE="$BASE_DIR/_site/index.html"
-STYLES_CSS="$BASE_DIR/_site/styles.css"
-
+HTML_OUTPUT_DIR="$BASE_DIR/_site"
+HTML_OUTPUT_FILE="$HTML_OUTPUT_DIR/index.html"
+STYLES_CSS="$HTML_OUTPUT_DIR/styles.css"
 
 # Log file for debugging (in the parent dir)
 LOG_FILE="$BASE_DIR/generate-leaderboard.log"
@@ -149,9 +148,9 @@ echo "</table></body></html>" >> "$HTML_OUTPUT_FILE"
 log_and_echo "$(date) - HTML file generated."
 
 log_and_echo "$(date) - Step 6: Deploy site"
-cd _site
+cd "$HTML_OUTPUT_DIR"
 ntl deploy --prod -d .
-cd ..
+cd "$BASE_DIR"
 
 log_and_echo "$(date) - All steps completed!"
 

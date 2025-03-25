@@ -52,10 +52,18 @@ echo "Extracted export URL successfully."
 
 echo "Step 2: Downloading SMS history..."
 
+if [ -f "$DOWNLOAD_FILE" ]; then
+    rm -f "$DOWNLOAD_FILE"
+fi
+
 curl -s -o "$DOWNLOAD_FILE" "$URL"
 echo "Successfully downloaded data to $DOWNLOAD_FILE"
 
 echo "Step 3: Filtering SMS history..."
+
+if [ -f "$FILTERED_FILE" ]; then
+    rm -f "$FILTERED_FILE"
+fi
 
 csvsql --query "$(cat "$FILTER_HISTORY_SQL")" "$DOWNLOAD_FILE" > "$FILTERED_FILE"
 
@@ -66,6 +74,10 @@ fi
 echo "Successfully filtered the SMS history"
 
 echo "Step 4: Generating leaderboard..."
+
+if [ -f "$LEADERBOARD_FILE" ]; then
+    rm -f "$LEADERBOARD_FILE"
+fi
 
 csvsql --query "$(cat "$LEADERBOARD_SQL")" "$FILTERED_FILE" "$PLAYERS_CSV" > "$LEADERBOARD_FILE"
 

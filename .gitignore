@@ -68,6 +68,9 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
+# Local Netlify folder
+.netlify
+
 # vim
 *.swp
 
@@ -75,12 +78,10 @@ node_modules/
 scratchpad.*
 
 # runtime data
-.creds
+.clickSendCreds
+.netlify_env
 output.txt
 *.csv
 _site/index.html
 *.log
-
-# Local Netlify folder
-.netlify
 

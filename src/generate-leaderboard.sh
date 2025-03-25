@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/bin/zsh
 
 set -e # Exit immediately if a command exits with a non-zero status
 
 # Define variables
 SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)" # Where the script *is*
 BASE_DIR="$(dirname "$SCRIPT_DIR")"  # The parent directory where the script should be run from
-CREDS_FILE="$BASE_DIR/.creds"
+NETLIFY_ENV_FILE="$BASE_DIR/.netlify_env"
+CLICKSEND_CREDS_FILE="$BASE_DIR/.clickSendCreds"
 PLAYERS_CSV="$BASE_DIR/data/players.csv"
 DOWNLOAD_FILE="$BASE_DIR/data/smshistory.csv"
 TEMP_JSON_FILE="$BASE_DIR/data/output.txt"
@@ -32,21 +33,21 @@ log_and_echo "$(date) - Starting script..."
 # so no need to change dir.
 log_and_echo "$(date) - Assuming script is run from base directory: $(pwd)"
 
-# DEBUG: Print the values of SCRIPT_DIR, BASE_DIR, and CREDS_FILE
+# DEBUG: Print the values of SCRIPT_DIR, BASE_DIR, and CLICKSEND_CREDS_FILE
 log_and_echo "$(date) - DEBUG: SCRIPT_DIR = $SCRIPT_DIR"
 log_and_echo "$(date) - DEBUG: BASE_DIR = $BASE_DIR"
-log_and_echo "$(date) - DEBUG: CREDS_FILE = $CREDS_FILE"
+log_and_echo "$(date) - DEBUG: CLICKSEND_CREDS_FILE = $CLICKSEND_CREDS_FILE"
 
 # Check that .creds file exists
-if [ ! -f "$CREDS_FILE" ]; then
-   log_and_echo "$(date) - ERROR: .creds file NOT FOUND at $CREDS_FILE" >&2
+if [ ! -f "$CLICKSEND_CREDS_FILE" ]; then
+   log_and_echo "$(date) - ERROR: .creds file NOT FOUND at $CLICKSEND_CREDS_FILE" >&2
    exit 1
 fi
 
 
 log_and_echo "$(date) - Step 1: Verifying credentials and retrieving export URL..."
 
-CREDS=$(cat "$CREDS_FILE")
+CREDS=$(cat "$CLICKSEND_CREDS_FILE")
 if [ -z "$CREDS" ]; then
     log_and_echo "$(date) - Error: CREDS file not found or empty." >&2
     log_and_echo "$(date) - Please set the CREDS file with your base64 encoded credentials by running the script generate-credentials-file.sh." >&2
@@ -148,11 +149,16 @@ echo "</table></body></html>" >> "$HTML_OUTPUT_FILE"
 log_and_echo "$(date) - HTML file generated."
 
 log_and_echo "$(date) - Step 6: Deploy site"
+source "$NETLIFY_ENV_FILE"
 cd "$HTML_OUTPUT_DIR"
 timeout 60 ntl deploy --prod -d . --silent 2>&1
+deploy_status=$?
 cd "$BASE_DIR"
+if [ $deploy_status -ne 0 ]; then
+  log_and_echo "$(date) - ERROR: Netlify deployment failed with exit code $deploy_status."
+  exit 1
+fi
 
 log_and_echo "$(date) - All steps completed!"
 
 exit 0
-

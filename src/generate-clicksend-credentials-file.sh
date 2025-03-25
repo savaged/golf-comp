@@ -16,5 +16,7 @@ newline_stripped_string="${encoded_string%$'\n'}"
 
 space_stripped_string=$(echo "$newline_stripped_string" | tr -d '[:space:]')
 
-echo -n $space_stripped_string > .creds
+echo -n "$space_stripped_string" > .clickSendCreds
+
+chmod 600 .clickSendCreds
 

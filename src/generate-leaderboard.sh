@@ -149,7 +149,7 @@ log_and_echo "$(date) - HTML file generated."
 
 log_and_echo "$(date) - Step 6: Deploy site"
 cd "$HTML_OUTPUT_DIR"
-ntl deploy --json --prod -d . 2>&1
+timeout 60 ntl deploy --prod -d . --silent 2>&1
 cd "$BASE_DIR"
 
 log_and_echo "$(date) - All steps completed!"

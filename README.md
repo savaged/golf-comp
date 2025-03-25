@@ -41,7 +41,7 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 
 ## Deployment
 
-* Run the shell script `generate-leaderboard.sh` that is within the `src` folder. (i.e. `$ src\generate-leaderboard.sh`).
+* Run the shell script `generate-leaderboard.sh` that is within the `src` folder. (i.e. `$ src/generate-leaderboard.sh`).
 
 
 ## Roadmap

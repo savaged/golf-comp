@@ -1,6 +1,6 @@
 # golf-comp
 
-A rudimentary golf competition scoring system using SMS with ClickSend
+A low-cost rudimentary golf competition scoring system using SMS with ClickSend and website hosting with Netlify.
 
 ## Prerequisites
 

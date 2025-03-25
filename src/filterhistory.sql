@@ -17,4 +17,4 @@ SELECT
 FROM smshistory
 WHERE direction = 'in'
 AND DATE(date_added) = DATE('now')
-AND body REGEXP '^[1-9]+\s[1-9]+(\s[0-9])*$';
+AND body REGEXP '^[0-9]+\s[0-9]+(\s[0-9])*$';

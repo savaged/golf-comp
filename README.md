@@ -34,7 +34,7 @@ A low-cost rudimentary golf competition scoring system using SMS with ClickSend 
 * Setup a cron job, that runs the deployment every 15 minutes for the competition day, by following these steps at the command line...
     * `crontab -e`
     * Add the following line (change the path to the file to suit you):
-        `*/15 8-19 * * * ~/repos/golf-comp/src/generate-leaderboard.sh >/dev/null 2>&1`
+        `*/15 8-19 * * * cd ~/repos/golf-comp && ~/repos/golf-comp/src/generate-leaderboard.sh 2>&1 && ~/repos/golf-comp/src/deploy-leaderboard.sh 2>&1`
 * Send an email with content based on the file `instructions-email.txt` in the `comms` folder.
 * Send a SMS via a ClickSend campaign with content based on the file `instructions-sms.txt` in the `comms` folder.
 

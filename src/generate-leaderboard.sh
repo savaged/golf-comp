@@ -148,17 +148,4 @@ echo "</table></body></html>" >> "$HTML_OUTPUT_FILE"
 
 log_and_echo "$(date) - HTML file generated."
 
-log_and_echo "$(date) - Step 6: Deploy site"
-source "$NETLIFY_ENV_FILE"
-cd "$HTML_OUTPUT_DIR"
-timeout 60 ntl deploy --prod -d . --silent 2>&1
-deploy_status=$?
-cd "$BASE_DIR"
-if [ $deploy_status -ne 0 ]; then
-  log_and_echo "$(date) - ERROR: Netlify deployment failed with exit code $deploy_status."
-  exit 1
-fi
-
-log_and_echo "$(date) - All steps completed!"
-
 exit 0

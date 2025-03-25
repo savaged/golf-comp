@@ -25,7 +25,7 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 ### A few days prior
 
 * Test by requesting a few highly cooperative players to send an SMS to the ClickSend number with three whole numbers separated by a single space, a few times with differing numbers.
-* Run the 'Deployment Steps' below.
+* Run the 'Deployment' below.
 * Send an email with content based on the file `instructions-email.txt` in the `comms` folder.
 * Send a SMS via a ClickSend campaign with content based on the file `instructions-sms.txt` in the `comms` folder.
 

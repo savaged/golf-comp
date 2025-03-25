@@ -79,7 +79,7 @@ scratchpad.*
 output.txt
 *.csv
 _site/index.html
-
+*.log
 
 # Local Netlify folder
 .netlify

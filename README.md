@@ -5,6 +5,9 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 ## Prerequisites
 
 * A Unix like command line.
+* The latest [npm](https://en.wikipedia.org/wiki/Npm) installed (usually from your standard package manager, e.g. apt).
+* The latest [csvsql](https://csvkit.readthedocs.io/en/latest/scripts/csvsql.html) installed.
+* The latest [netlify-cli](https://docs.netlify.com/cli/get-started/) installed.
 * Internet access and a browser.
 * Willingness to run shell scripts whilst others are enjoying competition.
 * Resilience if things go wrong.
@@ -34,7 +37,7 @@ A rudimentary golf competition scoring system using SMS with ClickSend
 
 ## During competition
 
-* At regular intervals run the 'Deployment Steps' below.
+* At regular intervals run the Deployment Step(s) below.
 
 ## Deployment
 
